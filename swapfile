@@ -1,0 +1,35 @@
+#!/bin/bash
+clear
+echo '
+
+
+     .─────────────────────────────────────────────────────────────.
+     .                                                             .
+     .                                                             .
+     .              Введите размер Свапфайла                       .
+     .                                                             .
+     .             только цифру- 1 = 1гигабайту                    .
+     .                                                             .
+     ──────────────────────────────────────────────────────────────
+'
+read -p "
+                -> Введите цифру : " size
+
+touch /home/swapfile
+chattr +C /home/swapfile
+fallocate --length ${size}GiB /home/swapfile
+sudo chown root /home/swapfile
+sudo chmod 600 /home/swapfile
+sudo mkswap /home/swapfile
+sudo swapon /home/swapfile
+sudo echo "/home/swapfile                           none            swap    defaults,pri=100         0 0" >> /etc/fstab
+echo '
+
+
+     .─────────────────────────────────────────────────────────────.
+     .                                                             .
+     .                                                             .
+     .              Готово , перезагрузите ПК                      .
+     .                                                             .
+     ──────────────────────────────────────────────────────────────
+'
