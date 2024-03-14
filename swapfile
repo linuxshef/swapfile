@@ -22,7 +22,7 @@ sudo chown root /home/swapfile
 sudo chmod 600 /home/swapfile
 sudo mkswap /home/swapfile
 sudo swapon /home/swapfile
-sudo echo "/home/swapfile                           none            swap    defaults,pri=100         0 0" >> /etc/fstab
+su root -c 'echo "/home/swapfile                           none            swap    defaults,pri=100         0 0" >> /etc/fstab'
 echo '
 
 
