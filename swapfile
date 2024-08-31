@@ -15,9 +15,9 @@ echo '
 read -p "
                 -> Введите цифру : " size
 
-touch /home/swapfile
-chattr +C /home/swapfile
-fallocate --length ${size}GiB /home/swapfile
+sudo touch /home/swapfile
+sudo chattr +C /home/swapfile
+sudo fallocate --length ${size}GiB /home/swapfile
 sudo chown root /home/swapfile
 sudo chmod 600 /home/swapfile
 sudo mkswap /home/swapfile
